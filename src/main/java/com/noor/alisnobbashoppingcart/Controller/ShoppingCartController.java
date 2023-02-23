@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.noor.alisnobbashoppingcart.Model.ShoppingCart;
 import com.noor.alisnobbashoppingcart.Repository.IShoppingCartRepository;
+import java.util.*;
 
 @RequestMapping("/shopping")
 @CrossOrigin("*")
@@ -24,8 +25,8 @@ public class ShoppingCartController {
     private IShoppingCartRepository repo;
 
     @PostMapping("/add")
-    public void AddProduct(@RequestBody ShoppingCart s){
-        repo.save(s);
+    public void AddProduct(@RequestBody List<ShoppingCart> s){
+        repo.saveAll(s);
     }
 
     @GetMapping("/{id}")
